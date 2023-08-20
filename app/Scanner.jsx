@@ -2,8 +2,9 @@ import { StyleSheet, View, Text, Button } from "react-native";
 import { useState, useEffect } from 'react';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Link, router } from "expo-router";
+import Product from "./Product";
 
-export default function Scanner({setProduct}) {
+export default function Scanner({setProduct, setScanning}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -26,6 +27,7 @@ export default function Scanner({setProduct}) {
   function handleScannedCode({type, data}) {
     setProduct({type: type, data: data});
     setScanned(true);
+    setScanning(false);
   }
 
   return (
