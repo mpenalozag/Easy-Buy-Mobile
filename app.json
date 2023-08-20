@@ -33,6 +33,7 @@
           "cameraPermission": "Permitir a EasyBuy a acceder a la cámara?"
         }
       ]
-    ]
+    ],
+    "scheme": "easybuy"    
   }
 }
