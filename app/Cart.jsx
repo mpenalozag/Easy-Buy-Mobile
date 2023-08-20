@@ -2,24 +2,23 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { Link } from "expo-router";
 import { useState } from 'react';
 
-export default function Cart({cart, setWatchingCart, setProduct}) {
-  console.log(cart);
+export default function Cart({ cart, setWatchingCart, setScanning }) {
   return (
     <View style={styles.container}>
       <Text>Carro de compras.</Text>
-      <Link href="/" asChild>
-        <Button
-          title={"Volver al inicio"}
-          onPress={() => {
-            setWatchingCart(false);
-          }}
-        />
-      </Link>
-      <Link href="/Scanner" asChild>
-        <Button
-          title={'Escanear producto'}
-        />
-      </Link>
+      <Button
+        title={"Volver al inicio"}
+        onPress={() => {
+          setWatchingCart(false);
+        }}
+      />
+      <Button
+        title={'Escanear producto'}
+        onPress={() => {
+          setWatchingCart(false);
+          setScanning(true);
+        }}
+      />
     </View>
   )
 }
