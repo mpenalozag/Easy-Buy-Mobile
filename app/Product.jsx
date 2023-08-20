@@ -1,17 +1,21 @@
 import { StyleSheet, View, Text, Button } from "react-native";
 import { Link } from "expo-router";
 
-export default function Product({ product, setProduct, addToCart }) {
+export default function Product({ product, setProduct, setScanning, addToCart }) {
   return (
     <View style={styles.container}>
       <Text>Producto con código {product.data}</Text>
       <Button
         title={'Escanear otro producto'}
-        onPress={() => setProduct(null)}
+        onPress={() => setScanning(true)}
       />
       <Button
         title={'Añadir al carro'}
-        onPress={() => addToCart(product.data)}
+        onPress={() => {
+            addToCart(product.data);
+            setProduct(null);
+          }
+        }
       />
     </View>
   )

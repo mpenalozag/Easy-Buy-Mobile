@@ -4,12 +4,15 @@ import { useState } from "react";
 import Scanner from "./Scanner";
 import Product from "./Product";
 import Cart from "./Cart";
+import { useEffect } from "react/cjs/react.production.min";
 
 export default function App() {
   const [cart, setCart] = useState([]);
   const [scanning, setScanning] = useState(false);
   const [product, setProduct] = useState(null);
   const [watchingCart, setWatchingCart] = useState(false);
+
+  console.log(cart);
 
   function addToCart(newProduct) {
     setCart([...cart, newProduct]);
@@ -18,7 +21,7 @@ export default function App() {
   }
 
   if (watchingCart) {
-    return <Cart cart={cart} setCart={setCart} setWatchingCart={setWatchingCart} setProduct={setProduct}/>
+    return <Cart cart={cart} setCart={setCart} setWatchingCart={setWatchingCart} setScanning={setScanning} />
   }
 
   if (scanning) {
@@ -26,7 +29,7 @@ export default function App() {
   }
 
   if (product) {
-    return <Product product={product} setProduct={setProduct} addToCart={addToCart} />
+    return <Product product={product} setProduct={setProduct} setScanning={setScanning} addToCart={addToCart} />
   }
 
   return (

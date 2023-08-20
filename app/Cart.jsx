@@ -3,9 +3,21 @@ import { Link } from "expo-router";
 import { useState } from 'react';
 
 export default function Cart({ cart, setWatchingCart, setScanning }) {
+
+  function renderCart() {
+    return cart.map((product, index) => {
+      return (
+        <Text key={index}>Producto con código {product}</Text>
+      )
+    })
+  }
+
   return (
     <View style={styles.container}>
       <Text>Carro de compras.</Text>
+      <View style={styles.cart}>
+        {renderCart()}
+      </View>
       <Button
         title={"Volver al inicio"}
         onPress={() => {
@@ -30,4 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  cart: {
+    margin: 20,
+  }
 });
