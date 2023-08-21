@@ -1,10 +1,11 @@
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, Image } from "react-native";
 import { Link } from "expo-router";
 import { useState } from "react";
 import Scanner from "./Scanner";
 import Product from "./Product";
 import Cart from "./Cart";
-import { useEffect } from "react/cjs/react.production.min";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function App() {
   const [cart, setCart] = useState([]);
@@ -12,7 +13,6 @@ export default function App() {
   const [product, setProduct] = useState(null);
   const [watchingCart, setWatchingCart] = useState(false);
 
-  console.log(cart);
 
   function addToCart(newProduct) {
     setCart([...cart, newProduct]);
