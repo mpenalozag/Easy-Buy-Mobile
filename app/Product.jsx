@@ -3,12 +3,14 @@ import { Link } from "expo-router";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function Product({ product, setProduct, setScanning, addToCart }) {
+export default function Product({ route, navigation }) {
+  let productCode = route.params.params.productCode;
   const [productData, setProductData] = useState(null);
 
   async function requestToApi() {
+    if (!productCode) return;
     try {
-      const response = await axios.get(`https://plain-olives-help.loca.lt/product/${product.data}`);
+      const response = await axios.get(`https://witty-banks-listen.loca.lt/product/${productCode}`);
       setProductData(response.data);
     } catch (error) {
       console.error(error);
@@ -27,7 +29,11 @@ export default function Product({ product, setProduct, setScanning, addToCart })
       {productData ? <Text>{productData.productPrice}</Text> : undefined}
       <Button
         title={'Escanear otro producto'}
-        onPress={() => setScanning(true)}
+        onPress={() => {
+          navigation.navigate('MainContainer', {
+            screen: 'Escanear',
+          })
+        }}
       />
       <Button
         title={'Añadir al carro'}
