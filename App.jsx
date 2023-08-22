@@ -1,13 +1,25 @@
 import { StyleSheet, View, Text, Button, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Constants from 'expo-constants';
 
 import MainContainer from "./app/MainContainer";
+import Product from "./app/Product";
 
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <MainContainer />
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name={"MainContainer"} component={MainContainer} />
+        <Stack.Screen name={"Producto"} component={Product} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
