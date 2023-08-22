@@ -10,26 +10,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Tab = createBottomTabNavigator();
 
-function ScannerButton({children, onPress}) {
-  <TouchableOpacity
-    style={{
-      top: -30,
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-    onPress={onPress}
-  >
-    <View style={{
-      width: 70,
-      height: 70,
-      borderRadius: 35,
-      backgroundColor: "#2196F3",
-    }}>
-      {children}
-    </View>
-  </TouchableOpacity>
-}
-
 export default function MainContainer() {
   return (
     <NavigationContainer>
